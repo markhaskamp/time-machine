@@ -1,0 +1,11 @@
+
+* user stories
+** as a user I want to time my billable time for a PSG client -> main_timer
+*** put a javascript timer on a page that publishes a 'tick' every second
+** as a user I want to add tags to a running main_timer
+** as a user I want to delete tags from a running main_timer
+** as a user I want to edit the start time of a running main_timer
+** as a user I want to edit the stop time of a stopped main_timer
+** as a user I want to add tags to a stopped main_timer
+** as a user I want to delete tags from a stopped main_timer
+** as a user I want to save date, start time, stop time, tags
