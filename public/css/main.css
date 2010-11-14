@@ -1,3 +1,16 @@
 body {
+    color: black;
+}
+
+.ticker {
+    border: solid 1px black;
+    color: #990000;
+}
+.main_timer {
+    border: solid 1px black;
+    color: #009900;
+}
+.report_container {
+    border: solid 1px black;
     color: #000099;
 }
