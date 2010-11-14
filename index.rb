@@ -2,5 +2,5 @@ require 'rubygems'
 require 'sinatra'
 
 get '/' do
-  "eddie would go"
+  "we excel on ice"
 end
