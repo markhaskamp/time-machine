@@ -12,7 +12,7 @@ function Page_Loader() {
     };
 
     this.subscribe_main_timer_to_ticker_event = function(ea) {
-        ea.subscribe("TICK", "subscribe_main_timer_to_ticker_event", function() {; });
+        ea.subscribe("TICK", "subscribe_main_timer_to_ticker_event", function() { Index_View.foo() });
     };
 
 }
