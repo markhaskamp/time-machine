@@ -10,7 +10,7 @@ describe("Index", function() {
           expect(page_loader.start_ticker).toHaveBeenCalled();
       });
 
-  it("given Page_Loader.page_load, main_timer subscribes to ticker event", function() {
+  it("when page loads, main_timer subscribes to ticker event", function() {
           ea = new EventAggregator();
           var page_loader = new Page_Loader();
           spyOn(page_loader, 'start_ticker');
