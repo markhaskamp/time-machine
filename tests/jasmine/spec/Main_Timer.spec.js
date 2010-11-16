@@ -21,14 +21,18 @@ describe("Main_Timer", function() {
                 expect(Main_Timer_View.update_start_time_display).toHaveBeenCalled();
             });
 
-        // when dormant, stop button is not displayed
-        // on start click, call hide_start_button
+        it("when state = 'dormant', click start sets state = 'running'", function() {
+                Main_Timer.start();
+                expect(Main_Timer.state).toEqual(Main_Timer.state_running);
+            });
 
-        it("given state = running, when receiving a tick event, update #stop_time_millies", function() {
+
+        // "when state != 'dormant', click start does nothing"
+        xit("given state = running, when receiving a tick event, update #stop_time_millies", function() {
                 expect(false).toEqual(true);
             });
 
-        it("given state = running, when receiving a tick event, update #stop_time_display", function() {
+        xit("given state = running, when receiving a tick event, update #stop_time_display", function() {
                 expect(false).toEqual(true);
             });
     });

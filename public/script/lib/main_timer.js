@@ -6,8 +6,19 @@ var Main_Timer = {
 
     ,receive_tick: function() {
         var d = new Date();
-        Main_Timer_View.update_start_time_millis(d.getTime());
-        Main_Timer_View.update_start_time_display(format_date_for_display(d));
+
+        if (this.state === this.state_dormant) {
+            Main_Timer_View.update_start_time_millis(d.getTime());
+            Main_Timer_View.update_start_time_display(format_date_for_display(d));
+        }
+        else if (this.state === this.state_running) {
+            Main_Timer_View.update_stop_time_millis(d.getTime());
+            Main_Timer_View.update_stop_time_display(format_date_for_display(d));
+        }
+    }
+
+    ,start: function() {
+        this.state = this.state_running;
     }
 
 };
@@ -16,8 +27,14 @@ var Main_Timer_View = {
     update_start_time_millis: function(millis) {
         $('#start_time_millis').html(millis);
     }
-    , update_start_time_display: function(date_string) {
+    ,update_start_time_display: function(date_string) {
         $('#start_time_display').html(date_string);
+    }
+    ,update_stop_time_millis: function(millis) {
+        $('#stop_time_millis').html(millis);
+    }
+    ,update_stop_time_display: function(date_string) {
+        $('#stop_time_display').html(date_string);
     }
 };
 
