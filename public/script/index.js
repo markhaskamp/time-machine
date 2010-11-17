@@ -10,6 +10,10 @@ $(document).ready( function() {
                                  function() {
                                      Main_Timer.start();
                                  });
+        $('#stop_button').click(
+                                   function() {
+                                       Main_Timer.stop();
+                                   });
     });
 
 var Index_View = {

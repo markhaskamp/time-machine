@@ -21,6 +21,10 @@ var Main_Timer = {
         this.state = this.state_running;
     }
 
+    ,stop: function() {
+        this.state = this.state_stopped;
+    }
+
 };
 
 var Main_Timer_View = {

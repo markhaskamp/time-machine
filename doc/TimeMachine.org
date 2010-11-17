@@ -9,3 +9,8 @@
 ** as a user I want to add tags to a stopped main_timer
 ** as a user I want to delete tags from a stopped main_timer
 ** as a user I want to save date, start time, stop time, tags
+
+* next steps
+** when running, show elapsed time
+** stop timer
+** when stopped, enable a save
