@@ -1,7 +1,6 @@
 var Main_Timer = {
     state_dormant: 'dormant'
     ,state_running: 'running'
-    ,state_stopped: 'stopped'
     ,state: 'dormant'
 
     ,receive_tick: function() {
@@ -19,10 +18,12 @@ var Main_Timer = {
 
     ,start: function() {
         this.state = this.state_running;
+        $('#stop_time_display').show();
     }
 
     ,stop: function() {
-        this.state = this.state_stopped;
+        this.state = this.state_dormant;
+        $('#stop_time_display').hide();
     }
 
 };
