@@ -8,7 +8,7 @@ ActiveRecord::Base.establish_connection(
   :database => 'local.sqlite3.db'
 )                                        
 
-class Post < ActiveRecord::Base
+class Events < ActiveRecord::Base
 end
 
 get '/' do
@@ -20,7 +20,7 @@ get '/env' do
 end
 
 get '/db' do
-  @foo = 'we excel on ice'
-  #@foo = Posts.all.count
-  #haml :db
+  #@foo = 'we excel on ice'
+  @foo = Events.all.count
+  haml :db
 end
