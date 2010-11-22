@@ -20,9 +20,9 @@ get '/env' do
 end
 
 get '/db' do
-  #@foo = 'we excel on ice'
-  @foo = Events.all.count
-  haml :db
+  @foo = 'we excel on ice'
+  #@foo = Events.all.count
+  #haml :db
 end
 
 get '/new' do
