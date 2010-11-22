@@ -8,8 +8,8 @@ require 'active_record'
 #  :database => 'db/local.sqlite3.db'
 #)                                        
 
-#class Events < ActiveRecord::Base
-#end
+class Events < ActiveRecord::Base
+end
 
 get '/' do
   haml :index
@@ -21,7 +21,7 @@ end
 
 get '/db' do
   #@foo = 'we excel on ice'
-  @foo = Events.all.count
+  @foo = events.all.count
   haml :db
 end
 
