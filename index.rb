@@ -8,7 +8,7 @@ require 'active_record'
 #  :database => 'db/local.sqlite3.db'
 #)                                        
 
-class Events < ActiveRecord::Base
+class Event < ActiveRecord::Base
 end
 
 get '/' do
