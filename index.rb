@@ -6,7 +6,7 @@ require 'active_record'
 #:adapter => 'sqlite3',
 #:database => 'db/local.sqlite3.db'
 ActiveRecord::Base.establish_connection(
-  :adapter => 'postgres',
+  :adapter => 'postgresql',
   :database => ENV['DATABASE_URL']
 )                                        
 
