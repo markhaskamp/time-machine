@@ -21,7 +21,7 @@ end
 
 get '/db' do
   #@foo = 'we excel on ice'
-  @foo = events.all.count
+  @foo = Events.all.count
   haml :db
 end
 
