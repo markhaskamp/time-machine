@@ -5,7 +5,7 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
-  :database => 'local.sqlite3.db'
+  :database => 'db/local.sqlite3.db'
 )                                        
 
 class Events < ActiveRecord::Base
@@ -23,4 +23,13 @@ get '/db' do
   #@foo = 'we excel on ice'
   @foo = Events.all.count
   haml :db
+end
+
+get '/new' do
+  s = "params:<br />"
+  params.each do |k,v|
+    s = s + "<b>#{k}</b>: #{v}<br />\n"
+  end
+
+  s
 end
