@@ -1,20 +1,21 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-#require 'active_record'
-require 'sequel'
+require 'active_record'
 
-#:adapter => 'sqlite3',
-#:database => 'db/local.sqlite3.db'
-#ActiveRecord::Base.establish_connection(
-#  :adapter => 'postgresql',
-#  :database => ENV['DATABASE_URL']
-#)                                        
+if (ENV['DATABASE_URL'])
+  ActiveRecord::Base.establish_connection(
+    :adapter => 'postgresql',
+    :database => ENV['DATABASE_URL']
+  )
+else
+  ActiveRecord::Base.establish_connection(
+    :adapter => 'sqlite3',
+    :database => 'db/local.sqlite3.db'
+  )
+end
 
-Sequel.connect(ENV['DATABASE_URL'] || sqlite3://db/local.sqlite3.db)
-
-#class Events < ActiveRecord::Base
-class Events < Sequel::Model
+class Events < ActiveRecord::Base
 end
 
 get '/' do
