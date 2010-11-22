@@ -3,13 +3,13 @@ require 'sinatra'
 require 'haml'
 require 'active_record'
 
-ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database => 'db/local.sqlite3.db'
-)                                        
+#ActiveRecord::Base.establish_connection(
+#  :adapter => 'sqlite3',
+#  :database => 'db/local.sqlite3.db'
+#)                                        
 
-class Events < ActiveRecord::Base
-end
+#class Events < ActiveRecord::Base
+#end
 
 get '/' do
   haml :index
