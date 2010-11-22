@@ -3,11 +3,11 @@ require 'sinatra'
 require 'haml'
 require 'active_record'
 
+#:adapter => 'sqlite3',
+#:database => 'db/local.sqlite3.db'
 ActiveRecord::Base.establish_connection(
-  #:adapter => 'sqlite3',
-  #:database => 'db/local.sqlite3.db'
   :adapter => 'postgresql',
-  :database => $ENV['DATABASE_URL']
+  :database => ENV['DATABASE_URL']
 )                                        
 
 class Events < ActiveRecord::Base
