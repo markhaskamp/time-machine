@@ -1,4 +1,6 @@
 source :gemcutter
 gem 'sinatra', '1.0'
 gem 'haml'
-gem 'activerecord'
+gem 'dm-core'
+gem 'dm-migrations'
+gem 'dm-sqlite-adapter'

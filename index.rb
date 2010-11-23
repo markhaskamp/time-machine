@@ -1,21 +1,22 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require 'active_record'
+require 'dm-core'
+require 'dm-migrations'
 
-if (ENV['DATABASE_URL'])
-  ActiveRecord::Base.establish_connection(
-    :adapter => 'postgresql',
-    :database => ENV['DATABASE_URL']
-  )
-else
-  ActiveRecord::Base.establish_connection(
-    :adapter => 'sqlite3',
-    :database => 'db/local.sqlite3.db'
-  )
+
+class Events
+  include DataMapper::Resource
+  property :id,         Serial
+  property :start_time, Integer
+  property :stop_time,  Integer
+  property :event_date, DateTime
+  property :tags,       Text
 end
 
-class Events < ActiveRecord::Base
+configure do
+  DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///db/local.sqlite3.db"))
+  DataMapper.auto_migrate!
 end
 
 get '/' do
@@ -23,6 +24,7 @@ get '/' do
 end
 
 get '/env' do
+  content_type 'text/plain'
   ENV.inspect
 end
 
