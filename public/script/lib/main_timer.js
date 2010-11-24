@@ -25,6 +25,8 @@ var Main_Timer = {
         this.state = this.state_dormant;
         start = $('#start_time_millis').html();
         stop = $('#stop_time_millis').html();
+        start = 42
+        stop = 43
         new_location = "http://falling-day-77.heroku.com/new?start_time=" + start + "&stop_time=" + stop;
         $('#stop_time_display').hide();
         $(window.location).attr('href', new_location);
