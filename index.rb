@@ -3,6 +3,7 @@ require 'sinatra'
 require 'haml'
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-sqlite-adapter'
 
 
 class Events
@@ -14,14 +15,14 @@ class Events
   property :tags,       Text
 end
 
-DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///db/local.sqlite3.db"))
-configure :development do
-  enable :logging, :dump_errors, :raise_errors
-end
+DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3://db/local.sqlite3.db"))
+#configure :development do
+#  enable :logging, :dump_errors, :raise_errors
+#end
 
-DataMapper.finalize
-require 'dm-migrations'
-DataMapper.auto_migrate!
+#DataMapper.finalize
+#require 'dm-migrations'
+#DataMapper.auto_migrate!
 
 get '/' do
   haml :index
