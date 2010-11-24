@@ -22,7 +22,7 @@ end
 
 DataMapper.finalize
 require 'dm-migrations'
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 get '/' do
   haml :index
@@ -34,13 +34,16 @@ get '/env' do
 end
 
 get '/db' do
-  #@foo = 'we excel on ice'
-  @foo = Events.all.count
+  @foo = ''
+
+  Events.all.each do |e|
+    @foo += "<div>#{e.id}. #{e.start_time}, #{e.stop_time}</div>\n"
+  end
   haml :db
 end
 
 get '/new' do
   Events.create(:start_time => 12345, :stop_time => 12350)
 
-  haml :db
+  redirect '/db'
 end
