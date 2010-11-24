@@ -14,10 +14,14 @@ class Events
   property :tags,       Text
 end
 
-configure do
-  DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///db/local.sqlite3.db"))
-  DataMapper.auto_migrate!
+DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///db/local.sqlite3.db"))
+configure :development do
+  enable :logging, :dump_errors, :raise_errors
 end
+
+DataMapper.finalize
+require 'dm-migrations'
+DataMapper.auto_migrate!
 
 get '/' do
   haml :index
