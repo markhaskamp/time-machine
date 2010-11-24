@@ -43,7 +43,7 @@ get '/db' do
 end
 
 get '/new' do
-  Events.create(:start_time => 12345, :stop_time => 12350)
+  Events.create(:start_time => params[:start_time], :stop_time => params[:stop_time])
 
   redirect '/db'
 end
