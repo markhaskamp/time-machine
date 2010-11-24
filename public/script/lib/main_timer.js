@@ -24,13 +24,13 @@ var Main_Timer = {
     ,stop: function() {
         
         this.state = this.state_dormant;
+        $('#stop_time_display').hide();
+
         start = $('#start_time_millis').html();
         stop = $('#stop_time_millis').html();
-        start = 42
-        stop = 43
+
         new_location = "http://falling-day-77.heroku.com/new?start_time=" + start + "&stop_time=" + stop;
-        console.log(new_location);
-        $('#stop_time_display').hide();
+        // console.log(new_location);
         $(window.location).attr('href', new_location);
     }
 
