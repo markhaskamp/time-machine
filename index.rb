@@ -40,10 +40,7 @@ get '/db' do
 end
 
 get '/new' do
-  s = "params:<br />"
-  params.each do |k,v|
-    s = s + "<b>#{k}</b>: #{v}<br />\n"
-  end
+  Events.create(:start_time => 12345, :stop_time => 12350)
 
-  s
+  haml :db
 end
