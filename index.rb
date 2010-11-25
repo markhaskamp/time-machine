@@ -34,7 +34,7 @@ get '/env' do
   h.merge ENV
 
   html_str = ""
-  ENV.keys.each do |k|
+  ENV.keys.sort.each do |k|
     html_str += "<div><span>#{k}:</span> <span style=\"color: #000099;\">#{ENV[k]}</span></div>\n"
   end
 
