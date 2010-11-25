@@ -29,8 +29,16 @@ get '/' do
 end
 
 get '/env' do
-  content_type 'text/plain'
-  ENV.inspect
+  #content_type 'text/plain'
+  h = Hash.new
+  h.merge ENV
+
+  html_str = ""
+  ENV.keys.each do |k|
+    html_str += "<div><span>#{k}:</span> <span style=\"color: #000099;\">#{ENV[k]}</span></div>\n"
+  end
+
+  html_str
 end
 
 get '/db' do

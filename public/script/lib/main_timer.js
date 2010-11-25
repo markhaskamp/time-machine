@@ -28,6 +28,8 @@ var Main_Timer = {
 
         start = $('#start_time_millis').html();
         stop = $('#stop_time_millis').html();
+        start = (start / 1000) / 60
+        stop = (stop / 1000) / 60
 
         new_location = "http://falling-day-77.heroku.com/new?start_time=" + start + "&stop_time=" + stop;
         console.log(new_location);
