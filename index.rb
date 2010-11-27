@@ -26,13 +26,7 @@ DataMapper.auto_upgrade!
 #DataMapper.auto_migrate!
 
 get '/' do
-  @foo = ''
-
-  Events.all.each do |e|
-    
-    display_date = e.event_date.strftime("%m/%d/%Y")
-    @foo += "<div>#{e.id}. [#{display_date}] #{e.start_time}, #{e.stop_time}</div>\n"
-  end
+  @report_html = build_report_html
 
   haml :index
 end
@@ -50,15 +44,9 @@ get '/env' do
   html_str
 end
 
-get '/db' do
-  @foo = ''
-
-  Events.all.each do |e|
-    
-    display_date = e.event_date.strftime("%m/%d/%Y")
-    @foo += "<div>#{e.id}. [#{display_date}] #{e.start_time}, #{e.stop_time}</div>\n"
-  end
-  haml :db
+get '/delete/:id' do
+  Events.get(params[:id]).destroy
+  redirect '/'
 end
 
 get '/new' do
@@ -69,4 +57,28 @@ get '/new' do
                 :event_date => event_date)
 
   redirect '/'
+end
+
+def build_report_html
+  html_str = ''
+
+  Events.all.each do |e|
+    
+    display_date = e.event_date.strftime("%m/%d/%Y")
+
+    html_str += <<EOL
+<div>
+  <span>#{e.id}. </span>
+  <span>[#{display_date}]</span>
+  <span>#{e.start_time}</span>,
+  <span>#{e.stop_time}</span>
+  <a href=\"/delete/#{e.id}\">delete</a>
+  <span>edit_start</span>
+  <span>edit_stop</span>
+</div>
+EOL
+
+  end
+
+  html_str
 end

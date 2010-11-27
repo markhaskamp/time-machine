@@ -1,9 +1,4 @@
 
-%div#main_menu
-  %a{:href => "/"} home
-  %a{:href => "/db"} db
-  %a{:href => "/env"} env
-
 %div.ticker#ticker ticker
 
 %div.main_timer#main_timer
@@ -19,4 +14,4 @@
 %div.report_container#report_container
   report_container
   %div#current_report
-    = @foo
+    = @report_html
