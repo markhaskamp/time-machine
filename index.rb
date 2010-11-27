@@ -26,6 +26,14 @@ DataMapper.auto_upgrade!
 #DataMapper.auto_migrate!
 
 get '/' do
+  @foo = ''
+
+  Events.all.each do |e|
+    
+    display_date = e.event_date.strftime("%m/%d/%Y")
+    @foo += "<div>#{e.id}. [#{display_date}] #{e.start_time}, #{e.stop_time}</div>\n"
+  end
+
   haml :index
 end
 
@@ -60,5 +68,5 @@ get '/new' do
                 :stop_time => params[:stop_time],
                 :event_date => event_date)
 
-  redirect '/db'
+  redirect '/'
 end
