@@ -14,6 +14,11 @@ $(document).ready( function() {
                                    function() {
                                        Main_Timer.stop();
                                    });
+
+        $('#start_time_edit_box').timePicker(
+                                             {step: 15,
+                                              startTime: "06:00",
+                                              endTime: "22:00"});
     });
 
 var Index_View = {

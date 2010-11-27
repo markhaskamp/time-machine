@@ -18,12 +18,14 @@ var Main_Timer = {
 
     ,start: function() {
         this.state = this.state_running;
+        $('#start_button').hide();
         $('#stop_time_display').show();
     }
 
     ,stop: function() {
         this.state = this.state_dormant;
         $('#stop_time_display').hide();
+        $('#stop_button').hide();
 
         start = $('#start_time_millis').html();
         stop = $('#stop_time_millis').html();
