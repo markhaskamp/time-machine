@@ -22,22 +22,16 @@ var Main_Timer = {
     }
 
     ,stop: function() {
-        
         this.state = this.state_dormant;
         $('#stop_time_display').hide();
 
         start = $('#start_time_millis').html();
         stop = $('#stop_time_millis').html();
-        console.log('old start: ' + start);
-        console.log('old stop: ' + stop);
 
         start = parseInt((start / 1000) / 60)
         stop = parseInt((stop / 1000) / 60)
-        console.log('new start: ' + start);
-        console.log('new stop: ' + stop);
 
         new_location = "/new?start_time=" + start + "&stop_time=" + stop;
-        console.log(new_location);
         window.location = new_location
     }
 
