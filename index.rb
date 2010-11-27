@@ -22,8 +22,8 @@ end
 
 DataMapper.finalize
 require 'dm-migrations'
-#DataMapper.auto_upgrade!
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
+#DataMapper.auto_migrate!
 
 get '/' do
   haml :index
