@@ -27,7 +27,6 @@ DataMapper.auto_upgrade!
 
 get '/' do
   @report_html = build_report_html
-
   haml :index
 end
 
@@ -73,14 +72,16 @@ def build_report_html
     stop_seconds = e.stop_time * 60
     d_stop = Time.at(stop_seconds)
 
-    html_str += <<EOL
-<div>
-  <span class="report_date">#{display_date}</span>
-  <span>from </span><span>#{d_start}</span>
-  <span> to </span><span>#{d_stop}</span>
-  <span> for </span><span>#{elapsed_minutes}</span> minutes
-  <a href="/delete/#{e.id}">delete</a>
-</div>
+    html_str += haml <<EOL
+%div
+  %span.report_date #{display_date}
+  %span from 
+  %span #{d_start}
+  %span to
+  %span #{d_stop}
+  %span for 
+  %span #{elapsed_minutes} minutes
+  %a{"href" => "/delete/#{e.id}"} delete
 EOL
 
   end
