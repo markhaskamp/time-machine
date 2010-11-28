@@ -66,13 +66,20 @@ def build_report_html
     
     display_date = e.event_date.strftime("%m/%d/%Y")
 
+    elapsed_minutes = e.stop_time - e.start_time
+    start_seconds = e.start_time * 60
+    d_start = Time.at(start_seconds)
+
+    stop_seconds = e.stop_time * 60
+    d_stop = Time.at(stop_seconds)
+
     html_str += <<EOL
 <div>
-  <span>#{e.id}. </span>
-  <span>[#{display_date}]</span>
-  <span>#{e.start_time}</span>,
-  <span>#{e.stop_time}</span>
-  <a href=\"/delete/#{e.id}\">delete</a>
+  <span class="report_date">#{display_date}</span>
+  <span>from </span><span>#{d_start}</span>
+  <span> to </span><span>#{d_stop}</span>
+  <span> for </span><span>#{elapsed_minutes}</span> minutes
+  <a href="/delete/#{e.id}">delete</a>
 </div>
 EOL
 
