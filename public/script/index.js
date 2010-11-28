@@ -20,6 +20,12 @@ $(document).ready( function() {
                                               startTime: "06:00",
                                               endTime: "22:00"});
 
+        $('#edit_start_time_button').click(function(){
+                $("#start_time_edit_box").show();
+                $("#start_time_edit_box").animate({"width": "100px"}, "slow");
+            });
+
+
         $('#start_time_edit_box').change(function() {
                 if ($('#start_time_edit_box').val()) {
                     var cur_date = new Date();
@@ -30,6 +36,10 @@ $(document).ready( function() {
                     $('#start_time_millis').html(new_time.getTime());
 
                     $('#start_time_display').html(format_date_for_display(new_time));
+
+                    $('#start_time_edit_box').css('width', '0px');
+                    $('#start_time_edit_box').hide();
+
                 }
             });
     });
