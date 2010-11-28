@@ -73,8 +73,6 @@ def build_report_html
   <span>#{e.start_time}</span>,
   <span>#{e.stop_time}</span>
   <a href=\"/delete/#{e.id}\">delete</a>
-  <span>edit_start</span>
-  <span>edit_stop</span>
 </div>
 EOL
 
