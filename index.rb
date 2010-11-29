@@ -72,19 +72,24 @@ def build_report_html
     stop_seconds = e.stop_time * 60
     d_stop = Time.at(stop_seconds)
 
-    html_str += haml <<EOL
-%div
-  %span.report_date #{display_date}
-  %span from 
-  %span #{d_start}
-  %span to
-  %span #{d_stop}
-  %span for 
-  %span #{elapsed_minutes} minutes
-  %a{"href" => "/delete/#{e.id}"} delete
+    html_str += <<EOL
+<div>
+  <span class="report_date">#{display_date}</span>
+  from
+  <span> #{sprintf("%d:%02d", d_start.hour, d_start.min)}</span>
+  <span> to </span>
+  <span> #{sprintf("%d:%02d", d_stop.hour, d_stop.min)} </span>
+  <span> for  </span>
+  <span> #{convert_minutes_to_hours_and_minutes(elapsed_minutes)} </span>
+  - <a href="/delete/#{e.id}">delete</a>
+</div>
 EOL
 
   end
 
   html_str
+end
+
+def convert_minutes_to_hours_and_minutes(m)
+  sprintf("%d:%02d", m/60.to_i, m%60)
 end
