@@ -20,6 +20,15 @@ describe("Index", function() {
           expect(page_loader.subscribe_main_timer_to_ticker_event).toHaveBeenCalled();
       });
 
+  it("when page loads, start-time_edit-button is hidden", function() {
+          ea = new EventAggregator();
+          var page_loader = new Page_Loader();
+          spyOn(page_loader, 'start_ticker');
+          spyOn(page_loader, 'hide_start_time_edit_button');
+          page_loader.page_load(ea);
+
+          expect(page_loader.hide_start_time_edit_button).toHaveBeenCalled();
+  });
 
 });
 
