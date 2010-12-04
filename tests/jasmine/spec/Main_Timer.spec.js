@@ -1,38 +1,39 @@
 describe("Main_Timer", function() {
-        it("initial state is 'dormant'", function() {
-                expect(Main_Timer.state).toEqual(Main_Timer.state_dormant);
-            });
+  describe("state is dormant", function() {
+    it("initial state is 'dormant'", function() {
+      expect(Main_Timer.state).toEqual(Main_Timer.state_dormant);
+        });
 
-        it("given state = dormant, when receiving a tick event, updates #start_time_millis", function() {
-                spyOn(Main_Timer_View, 'update_start_time_millis');
-
-                Main_Timer.state = Main_Timer.state_dormant;
-                Main_Timer.receive_tick();
+    it("given state = dormant, when receiving a tick event, updates #start_time_millis", function() {
+      spyOn(Main_Timer_View, 'update_start_time_millis');
+                        
+      Main_Timer.state = Main_Timer.state_dormant;
+      Main_Timer.receive_tick();
                 
-                expect(Main_Timer_View.update_start_time_millis).toHaveBeenCalled();
-            });
+      expect(Main_Timer_View.update_start_time_millis).toHaveBeenCalled();
+        });
 
-        it("given state = dormant, when receiving a tick event, updates #start_time_display", function() {
-                spyOn(Main_Timer_View, 'update_start_time_display');
+    it("given state = dormant, when receiving a tick event, updates #start_time_display", function() {
+      spyOn(Main_Timer_View, 'update_start_time_display');
 
-                Main_Timer.state = Main_Timer.state_dormant;
-                Main_Timer.receive_tick();
+      Main_Timer.state = Main_Timer.state_dormant;
+      Main_Timer.receive_tick();
                 
-                expect(Main_Timer_View.update_start_time_display).toHaveBeenCalled();
-            });
+      expect(Main_Timer_View.update_start_time_display).toHaveBeenCalled();
+        });
 
-        it("when state = 'dormant', click start sets state = 'running'", function() {
-                Main_Timer.start();
-                expect(Main_Timer.state).toEqual(Main_Timer.state_running);
-            });
-
-
-        // "when state != 'dormant', click start does nothing"
-        xit("given state = running, when receiving a tick event, update #stop_time_millies", function() {
-                expect(false).toEqual(true);
-            });
-
-        xit("given state = running, when receiving a tick event, update #stop_time_display", function() {
-                expect(false).toEqual(true);
-            });
+    it("when state = 'dormant', click start sets state = 'running'", function() {
+      Main_Timer.start();
+      expect(Main_Timer.state).toEqual(Main_Timer.state_running);
     });
+
+    // "when state != 'dormant', click start does nothing"
+    xit("given state = running, when receiving a tick event, update #stop_time_millies", function() {
+      expect(false).toEqual(true);
+    });
+
+    xit("given state = running, when receiving a tick event, update #stop_time_display", function() {
+      expect(false).toEqual(true);
+    });
+  });
+});
