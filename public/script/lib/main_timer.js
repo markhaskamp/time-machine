@@ -20,6 +20,7 @@ var Main_Timer = {
         this.state = this.state_running;
         $('#start_button').hide();
         $('#stop_time_display').show();
+        Main_Timer_View.show_start_time_edit_button();
     }
 
     ,stop: function() {
@@ -51,6 +52,9 @@ var Main_Timer_View = {
     }
     ,update_stop_time_display: function(date_string) {
         $('#stop_time_display').html(date_string);
+    }
+    ,show_start_time_edit_button: function() {
+        $('#edit_start_time_button').show();
     }
 };
 
