@@ -9,6 +9,7 @@ require 'dm-sqlite-adapter'
 class Events
   include DataMapper::Resource
   property :id,         Serial
+  property :gmt_offset,  Integer
   property :start_time, Integer
   property :stop_time,  Integer
   property :event_date, DateTime
@@ -51,7 +52,8 @@ end
 get '/new' do
   
   event_date = Time.now
-  Events.create(:start_time => params[:start_time],
+  Events.create(:gmt_offset => event_date.gmt_offset,
+                :start_time => params[:start_time],
                 :stop_time => params[:stop_time],
                 :event_date => event_date)
 
@@ -81,6 +83,7 @@ def build_report_html
   <span> #{sprintf("%d:%02d", d_stop.hour, d_stop.min)} </span>
   <span> for  </span>
   <span> #{convert_minutes_to_hours_and_minutes(elapsed_minutes)} </span>
+  <span> (#{e.gmt_offset})</span>
   - <a href="/delete/#{e.id}">delete</a>
 </div>
 EOL
