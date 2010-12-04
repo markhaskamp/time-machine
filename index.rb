@@ -76,6 +76,7 @@ def build_report_html
 
     html_str += <<EOL
 <div>
+  <div>Time.now.gmt_offset: #{Time.now.gmt_offset}</div>
   <span class="report_date">#{display_date}</span>
   from
   <span> #{sprintf("%d:%02d", d_start.hour, d_start.min)}</span>
