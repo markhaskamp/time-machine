@@ -12,7 +12,7 @@ class Events
   property :gmt_offset,  Integer
   property :start_time, Integer
   property :stop_time,  Integer
-  property :event_date, DateTime
+  property :event_date, Time
   property :tags,       Text
 end
 
@@ -71,9 +71,13 @@ def build_report_html
     elapsed_minutes = e.stop_time - e.start_time
     start_seconds = e.start_time * 60
     d_start = Time.at(start_seconds)
+    puts "start zone: #{d_start.zone}"
+    puts "start gmt_offset: #{d_start.gmt_offset}"
+    d_start += (3 * 60 * 60)
 
     stop_seconds = e.stop_time * 60
     d_stop = Time.at(stop_seconds)
+    d_stop += (3 * 60 * 60)
 
     html_str += <<EOL
 <div>
