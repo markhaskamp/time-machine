@@ -73,11 +73,12 @@ def build_report_html
     d_start = Time.at(start_seconds)
     puts "start zone: #{d_start.zone}"
     puts "start gmt_offset: #{d_start.gmt_offset}"
-    d_start += (3 * 60 * 60)
+    puts "e.gmt_offset: #{e.gmt_offset * 60}"
+    d_start += (d_start.gmt_offset + (e.gmt_offset * 60))
 
     stop_seconds = e.stop_time * 60
     d_stop = Time.at(stop_seconds)
-    d_stop += (3 * 60 * 60)
+    d_stop += (d_stop.gmt_offset + (e.gmt_offset * 60))
 
     html_str += <<EOL
 <div>
