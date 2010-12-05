@@ -16,6 +16,7 @@ class Events
   property :tags,       Text
 end
 
+
 DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3://local.sqlite3.db"))
 configure :development do
  enable :logging, :dump_errors, :raise_errors
@@ -32,7 +33,6 @@ get '/' do
 end
 
 get '/env' do
-  #content_type 'text/plain'
   h = Hash.new
   h.merge ENV
 
