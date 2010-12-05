@@ -52,7 +52,7 @@ end
 get '/new' do
   
   event_date = Time.now
-  Events.create(:gmt_offset => event_date.gmt_offset,
+  Events.create(:gmt_offset => params[:time_zone_offset],
                 :start_time => params[:start_time],
                 :stop_time => params[:stop_time],
                 :event_date => event_date)
