@@ -34,7 +34,8 @@ var Main_Timer = {
         start = parseInt((start / 1000) / 60)
         stop = parseInt((stop / 1000) / 60)
 
-        new_location = "/new?start_time=" + start + "&stop_time=" + stop;
+        var d = new Date();
+        new_location = "/new?start_time=" + start + "&stop_time=" + stop + "&time_zone_offset=" + (new Date()).getTimezoneOffset() ;
         window.location = new_location
     }
 
