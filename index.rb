@@ -61,8 +61,7 @@ get '/new' do
 end
 
 def build_report_html
-  html_str = "<div>Time.now.gmt_offset: #{Time.now.gmt_offset}</div>"
-  html_str += "<div>Time.now.strftime(\"%Z\"): #{Time.now.strftime("%Z")}</div>"
+  html_str = ""
 
   Events.all.each do |e|
     
@@ -86,9 +85,7 @@ def build_report_html
   <span> #{sprintf("%d:%02d", d_stop.hour, d_stop.min)} </span>
   <span> for  </span>
   <span> #{convert_minutes_to_hours_and_minutes(elapsed_minutes)} </span>
-  <span> (#{e.gmt_offset})</span>
-  <span> (#{e.event_date.strftime("%Z")})</span>
-  - <a href="/delete/#{e.id}">delete</a>
+  - [<a href="/delete/#{e.id}">X</a>]
 </div>
 EOL
 
