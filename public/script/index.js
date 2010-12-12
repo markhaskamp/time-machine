@@ -11,6 +11,8 @@ $(document).ready( function() {
         var page_loader = new Page_Loader();
         
         page_loader.page_load(ea);
+        $('.report_edit_line').hide();
+        $('.edit').click(function() { $(this).next().toggle(); });
 
         $('#start_button').click(
                                  function() {
