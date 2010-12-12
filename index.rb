@@ -86,6 +86,7 @@ def build_report_html
   <span> for  </span>
   <span> #{convert_minutes_to_hours_and_minutes(elapsed_minutes)} </span>
   - [<a href="/delete/#{e.id}">X</a>]
+  <span class="clicker">edit</span>
 </div>
 EOL
 

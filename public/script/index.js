@@ -2,8 +2,14 @@ var ea;
 var page_loader;
 
 $(document).ready( function() {
+        $('.clicker').hover(
+                            function() { $(this).css('cursor', 'pointer') },
+                            function() { $(this).css('cursor', 'auto') }
+                            );
+
         ea = new EventAggregator();
         var page_loader = new Page_Loader();
+        
         page_loader.page_load(ea);
 
         $('#start_button').click(
